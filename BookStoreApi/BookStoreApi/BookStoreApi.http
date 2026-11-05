@@ -1,0 +1,35 @@
+@BookStoreApi_HostAddress = https://localhost:7292
+@id=6aecc675746b27cb1d29b08f
+
+### Get all books
+GET {{BookStoreApi_HostAddress}}/books
+Accept: application/json
+
+### Get one book
+GET {{BookStoreApi_HostAddress}}/books/{{id}}
+Accept: application/json
+
+### Create a book
+POST {{BookStoreApi_HostAddress}}/books
+Content-Type: application/json
+
+{
+  "Name": "The Pragmatic Programmer",
+  "Price": 49.99,
+  "Category": "Computers",
+  "Author": "Andy Hunt"
+}
+
+### Update the book
+PUT {{BookStoreApi_HostAddress}}/books/{{id}}
+Content-Type: application/json
+
+{
+  "Name": "The Pragmatic Programmer - Updated",
+  "Price": 52.99,
+  "Category": "Computers",
+  "Author": "Andy Hunt"
+}
+
+### Delete the book
+DELETE {{BookStoreApi_HostAddress}}/books/{{id}}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101827">
+    <meta name="description" content="A simple study task planner powered by an ASP.NET Core Web API.">
+    <title>StudyFlow | Task Planner</title>
+    <link rel="stylesheet" href="css/sites.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <a class="brand" href="/" aria-label="StudyFlow home">
+                <span class="brand-mark" aria-hidden="true">S</span>
+                <span>StudyFlow</span>
+            </a>
+            <span class="topbar-note">A focused space for your study tasks</span>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div>
+                    <p class="eyebrow">STUDENT TASK PLANNER</p>
+                    <h1>Make progress, one task at a time.</h1>
+                    <p class="hero-copy">Keep your coursework, practice, and personal goals in one clear list.</p>
+                </div>
+                <div class="hero-badge" aria-hidden="true"><span>✓</span> Built for steady progress</div>
+            </section>
+
+            <section class="stats" aria-label="Task summary">
+                <article class="stat-card">
+                    <span class="stat-label">All tasks</span>
+                    <strong id="total-count">0</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">To do</span>
+                    <strong id="open-count">0</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Completed</span>
+                    <strong id="completed-count">0</strong>
+                </article>
+            </section>
+
+            <section class="workspace">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR WORKSPACE</p>
+                        <h2>Task list</h2>
+                    </div>
+                    <span class="api-label"><span class="status-dot"></span> Connected to Todo API</span>
+                </div>
+
+                <form id="add-form" class="add-form">
+                    <label class="sr-only" for="add-name">New task</label>
+                    <input type="text" id="add-name" maxlength="120" placeholder="What do you need to get done?" required>
+                    <button class="primary-button" type="submit"><span aria-hidden="true">＋</span> Add task</button>
+                </form>
+
+                <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+
+                <div class="toolbar">
+                    <label class="search-box">
+                        <span aria-hidden="true">⌕</span>
+                        <span class="sr-only">Search tasks</span>
+                        <input type="search" id="search" placeholder="Search your tasks">
+                    </label>
+                    <label class="sr-only" for="filter">Filter tasks</label>
+                    <select id="filter" class="filter-select">
+                        <option value="all">All tasks</option>
+                        <option value="open">To do</option>
+                        <option value="complete">Completed</option>
+                    </select>
+                </div>
+
+                <div id="empty-state" class="empty-state" hidden>
+                    <div class="empty-icon" aria-hidden="true">✦</div>
+                    <h3 id="empty-title">Your list is clear</h3>
+                    <p id="empty-copy">Add your first task above and build some momentum.</p>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="status-column">Status</th>
+                                <th scope="col">Task</th>
+                                <th scope="col" class="actions-column">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="todos"></tbody>
+                    </table>
+                </div>
+                <p class="workspace-footer">Your task list is stored by the API while the app is running.</p>
+            </section>
+        </main>
+        <footer class="footer">StudyFlow · ASP.NET Core controller-based Web API demo</footer>
+    </div>
+
+    <dialog id="edit-dialog" class="edit-dialog">
+        <form id="edit-form">
+            <div class="dialog-heading">
+                <div>
+                    <p class="eyebrow">UPDATE TASK</p>
+                    <h2>Edit task</h2>
+                </div>
+                <button class="icon-button" type="button" id="close-edit" aria-label="Close edit form">×</button>
+            </div>
+            <input type="hidden" id="edit-id">
+            <label class="field-label" for="edit-name">Task name</label>
+            <input type="text" id="edit-name" maxlength="120" required>
+            <label class="check-field"><input type="checkbox" id="edit-isComplete"> Mark as completed</label>
+            <div class="dialog-actions">
+                <button class="secondary-button" type="button" id="cancel-edit">Cancel</button>
+                <button class="primary-button" type="submit">Save changes</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="js/site.js"></script>
+</body>
+</html>
