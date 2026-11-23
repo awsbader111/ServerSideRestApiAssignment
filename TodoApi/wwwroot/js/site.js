@@ -30,7 +30,7 @@ function addItem() {
     .catch(error => console.error('Unable to add item.', error));
 }
 function deleteItem(id) {
-  fetch(\`\${uri}/\${id}\`, {
+  fetch(`${uri}/${id}`, {
     method: 'DELETE'
   })
   .then(() => getItems())
@@ -51,7 +51,7 @@ function updateItem() {
     isComplete: document.getElementById('edit-isComplete').checked,
     name: document.getElementById('edit-name').value.trim()
   };
-  fetch(\`\${uri}/\${itemId}\`, {
+  fetch(`${uri}/${itemId}`, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
@@ -73,7 +73,7 @@ function closeInput() {
 function _displayCount(itemCount) {
   const name = (itemCount === 1) ? 'to-do' : 'to-dos';
 
-  document.getElementById('counter').innerText = \`\${itemCount} \${name}\`;
+  document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 
 function _displayItems(data) {
@@ -91,10 +91,10 @@ function _displayItems(data) {
 
     let editButton = button.cloneNode(false);
     editButton.innerText = 'Edit';
-    editButton.setAttribute('onclick', \`displayEditForm(\${item.id})\`);
+    editButton.setAttribute('onclick', `displayEditForm(${item.id})`);
     let deleteButton = button.cloneNode(false);
     deleteButton.innerText = 'Delete';
-    deleteButton.setAttribute('onclick', \`deleteItem(\${item.id})\`);
+    deleteButton.setAttribute('onclick', `deleteItem(${item.id})`);
 
     let tr = tBody.insertRow();
 
