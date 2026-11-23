@@ -4,7 +4,7 @@ This project follows the ASP.NET Core controller-based Web API and JavaScript tu
 
 ## Run the application
 
-1. Open \`TodoApi.slnx\` in Visual Studio, or open a terminal in this folder.
+1. Open TodoApi.slnx in Visual Studio, or open a terminal in this folder.
 2. Run the TodoApi project.
 3. Open the HTTPS address shown by Visual Studio.
 
